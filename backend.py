@@ -1,6 +1,9 @@
 import requests
+import os
 
-api_key = "1c1f23ba08a92cba04deeb875fc9a2a5"
+api_key = os.getenv("WEATHERAPI")
+
+print(api_key)
 
 
 def get_data(place, days=None, kind=None):
@@ -12,7 +15,7 @@ def get_data(place, days=None, kind=None):
     numOfValues = 8*days
     filteredData = filteredData[:numOfValues]
     if kind == "Temperature":
-        filteredData = [i["main"][0]['temp'] for i in filteredData]
+        filteredData = [i["main"]['temp'] for i in filteredData]
 
     if kind == "Sky":
         filteredData = [i['weather'][0]['main'] for i in filteredData]
