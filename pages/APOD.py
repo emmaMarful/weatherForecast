@@ -5,17 +5,18 @@ from dotenv import load_dotenv
 
 
 def callApi():
-    load_dotenv(".env")
+    load_dotenv()
 
 
 callApi()
 
+try:
+    api_key = os.getenv('apod_key')
+    url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
+except TypeError:
+    # api_key = os.getenv('apod_key')
+    url = f"https://api.nasa.gov/planetary/apod?api_key={st.secrets['apod_key']}"
 
-api_key = os.getenv('apod_key')
-
-
-# url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
-url = f"https://api.nasa.gov/planetary/apod?api_key={st.secrets('apod_key')}"
 
 response = requests.get(url)
 content = response.json()
