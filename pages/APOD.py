@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 
 def callApi():
-    load_dotenv()
+    load_dotenv(".env")
 
 
 callApi()
