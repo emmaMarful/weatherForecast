@@ -1,8 +1,17 @@
 import streamlit as st
 import requests
 import os
+from dotenv import load_dotenv
 
-api_key = os.getenv("APODAPI")
+
+def callApi():
+    load_dotenv()
+
+
+callApi()
+
+
+api_key = os.getenv('apod_key')
 
 url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
 
@@ -27,3 +36,4 @@ st.write(date)
 
 st.write(f':red[Description on {content["title"]}]')
 st.write(f":white[{content['explanation']}]")
+

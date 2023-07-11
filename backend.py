@@ -1,7 +1,15 @@
 import requests
 import os
+from dotenv import load_dotenv
 
-api_key = os.getenv("WEATHERAPI")
+
+def callApi():
+    load_dotenv()
+
+
+callApi()
+
+api_key = os.getenv("weather_key")
 
 
 def get_data(place, days=None):
